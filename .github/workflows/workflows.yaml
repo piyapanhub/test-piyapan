@@ -1,4 +1,4 @@
-name: arm-test-flow
+name: piyapan-test
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -7,10 +7,18 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  hello:
+  flow1:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: echo word
-        run: echo "hello wrold"
+      - name: echo hello
+        run: echo "hello"
+  flow2:
+    # The type of runner that the job will run on
+    needs: flow1
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: echo world
+        run: echo "world"
